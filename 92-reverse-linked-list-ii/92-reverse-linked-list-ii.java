@@ -12,35 +12,31 @@
  class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
 
-        // if(head==null || left==right)
-        //     return head;
-        ListNode d= new ListNode(0);
-        ListNode prev =d;
-        d.next=head;
-        ListNode cur=null;
-        int cnt=0;
-        while(cnt<left-1)
+        //In one pass
+        
+        ListNode dummy= new ListNode(0);
+        dummy.next=head;
+        ListNode prev=dummy;
+        
+        while(left-1>0)
         {
             prev=prev.next;
-            cnt++;
+            left--;
+            right--;
         }
         
-        ListNode tail=prev.next;
-        
-        int no=right-left;
-         ListNode x=prev.next;
-        while(no-->0)
+        ListNode tail= prev.next;
+        ListNode cur= prev.next;
+        right=right-1;
+        while(right-->0)
         {
-           x=prev.next;
-            prev.next= tail.next;
+            cur=prev.next;
+            prev.next=tail.next;
             tail.next=tail.next.next;
-            prev.next.next=x;
-   
+            prev.next.next=cur;
+            
         }
-        
-        
-        return d.next;
-        
+        return dummy.next;
     }
 }
 
