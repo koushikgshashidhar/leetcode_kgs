@@ -59,7 +59,7 @@ class Solution {
         ListNode prev=null;
         ListNode cur=head;
         ListNode next=null;
-//          if(head!=null && head.next!=null)
+
          next=head.next;
         
         while(cur!=null)
