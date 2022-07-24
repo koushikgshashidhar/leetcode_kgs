@@ -11,7 +11,6 @@ class Solution {
                 j--;
             else
                 i++;
-            //System.out.println(i+" "+j);
         }
         return false;
     }
