@@ -65,12 +65,12 @@ class Solution {
             { prev=cur.left;
             
             TreeNode temp=prev;
-            while(temp.right!=null)
-                temp=temp.right;
+            while(prev.right!=null)
+                prev=prev.right;
             
             
-            temp.right=cur.right;
-            cur.right=prev;
+            prev.right=cur.right;
+            cur.right=cur.left;
              cur.left=null;
             }
             
