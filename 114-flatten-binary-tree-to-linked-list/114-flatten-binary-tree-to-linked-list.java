@@ -60,17 +60,17 @@ class Solution {
         TreeNode cur=root;
         while(cur!=null)
         {
-            TreeNode prev;
+            
             if(cur.left!=null)
-            { prev=cur.left;
+            { TreeNode prev=cur.left;
             
             TreeNode temp=prev;
-            while(prev.right!=null)
-                prev=prev.right;
+            while(temp.right!=null)
+                temp=temp.right;
             
             
-            prev.right=cur.right;
-            cur.right=cur.left;
+            temp.right=cur.right;
+            cur.right=prev;
              cur.left=null;
             }
             
