@@ -29,27 +29,56 @@
 //     }
 // }
 
-//son way using Iterative way TC:o(n) with O(n) stack
+//second way using Iterative way TC:o(n) with O(n) stack
+// class Solution {
+// 
+//     public void flatten(TreeNode root) {
+        
+//         if(root==null)return;
+//         Stack<TreeNode> st= new Stack<TreeNode>();
+//         st.add(root);
+//         while(!st.isEmpty())
+//         {
+//             TreeNode cur=st.pop();
+            
+//             if(cur.right!=null)st.push(cur.right);
+//             if(cur.left!=null)st.push(cur.left);
+            
+//             cur.left=null;
+//             if(!st.isEmpty())
+//             cur.right=st.peek();
+//         }
+        
+//     }
+// }
+
+//Third Way Morris traversal
 class Solution {
-     TreeNode prev=null;
+
     public void flatten(TreeNode root) {
-        
-        if(root==null)return;
-        Stack<TreeNode> st= new Stack<TreeNode>();
-        st.add(root);
-        while(!st.isEmpty())
+         
+        TreeNode cur=root;
+        while(cur!=null)
         {
-            TreeNode cur=st.pop();
+            TreeNode prev;
+            if(cur.left!=null)
+            { prev=cur.left;
             
-            if(cur.right!=null)st.push(cur.right);
-            if(cur.left!=null)st.push(cur.left);
+            TreeNode temp=prev;
+            while(temp.right!=null)
+                temp=temp.right;
             
-            cur.left=null;
-            if(!st.isEmpty())
-            cur.right=st.peek();
+            
+            temp.right=cur.right;
+            cur.right=prev;
+             cur.left=null;
+            }
+            
+            cur=cur.right; 
         }
-        
+
     }
 }
+        
 
 
