@@ -1,16 +1,13 @@
 class Solution {
     public List<String> wordSubsets(String[] words1, String[] words2) {
-        
-        
+     
          int []w2= new int[26];
         //finding the max array
         for(String s:words2)
         {
            int []temp=count(s);
             for(char c:s.toCharArray())
-            {
                 w2[c-'a']=Math.max(temp[c-'a'],w2[c-'a']);
-            }
             
         }
       
