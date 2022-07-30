@@ -15,7 +15,8 @@ class Solution {
         }
       
         List<String> ls= new ArrayList<String>();
-    label:for(String s:words1)
+    label:
+        for(String s:words1)
         {
              int []temp= count(s);
              for(int i=0;i<26;i++)
