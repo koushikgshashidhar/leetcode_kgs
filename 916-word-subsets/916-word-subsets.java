@@ -9,19 +9,16 @@ class Solution {
            int []temp=count(s);
             for(char c:s.toCharArray())
             {
-                //temp[c-'a']++;
                 w2[c-'a']=Math.max(temp[c-'a'],w2[c-'a']);
             }
             
         }
-        System.out.println(Arrays.toString(w2));
       
         List<String> ls= new ArrayList<String>();
     label:
         for(String s:words1)
         {
              int []temp= count(s);
-            System.out.println(Arrays.toString(temp));
              for(int i=0;i<26;i++)
             {
                  if(temp[i]<w2[i])
