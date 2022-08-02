@@ -3,24 +3,24 @@ class Solution {
         
         
         
-        //Brute Force
-         int n = matrix.length;
-        int [] arr = new int[n*n];
-        int idx = 0;
-        for(int i = 0;i<n;i++){
-            for(int j = 0;j<n;j++){
-                arr[idx++] = matrix[i][j];
-            }
-        }
+//         //1st Method Brute Force TC:O(n*n+nlogn)=(n^2)
+//          int n = matrix.length;
+//         int [] arr = new int[n*n];
+//         int idx = 0;
+//         for(int i = 0;i<n;i++){
+//             for(int j = 0;j<n;j++){
+//                 arr[idx++] = matrix[i][j];
+//             }
+//         }
+//         Arrays.sort(arr);
+//         return arr[k - 1];
         
-        Arrays.sort(arr);
         
-        return arr[k - 1];
-//         // 2nd Method TC:O(n*logk)
+        
+//         // 2nd Method TC:O(n*n+logk)=O(n^2)
 //         PriorityQueue<Integer>  hp= new PriorityQueue<Integer>(Collections.reverseOrder());
 //         for(int i=0;i<matrix.length;i++)
-//         {
-            
+//         {           
 //             for(int j=0;j<matrix[i].length;j++)
 //             {
 //                 hp.add(matrix[i][j]);
@@ -28,7 +28,36 @@ class Solution {
 //                 hp.poll();      
 //             }
 //         }
-//         System.out.println(hp.size());
 //         return hp.peek();
+        
+         int rows = matrix.length, cols = matrix[0].length;
+        
+        int lo = matrix[0][0], hi = matrix[rows - 1][cols - 1] ;
+        while(lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+            int count = 0,  maxNum = lo;
+           
+            for (int r = 0, c = cols - 1; r < rows; r++) {
+                while (c >= 0 && matrix[r][c] > mid) c--;   
+                
+                if (c >= 0) {
+                    count += (c + 1); // count of nums <= mid in matrix
+                    maxNum = Math.max(maxNum, matrix[r][c]); 
+         // mid might be value not in  matrix, we need to record the actually max num;
+                }else{ //it means c < 0
+                    break;
+                } 
+            }
+            
+            // adjust search range
+            if (count == k) return maxNum;
+            else if (count < k) lo = mid + 1;
+            else hi = mid - 1;
+        }
+        return lo;
+        
+        
+        
+        
     }
 }
