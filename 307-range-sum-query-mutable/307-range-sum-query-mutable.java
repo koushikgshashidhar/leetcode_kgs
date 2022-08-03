@@ -7,52 +7,55 @@ class NumArray {
         build(nums, 0, n-1, 0);
     }
     
-     int build(int []nums, int left, int right, int node) {
-        int middle;
-        int leftSum, rightSum;
+     int build(int []nums, int left, int right, int pos) {
+         
+         int mid;
+         int lsum,rsum;
+         if(left==right)return segTree[pos]=nums[left];
+         
+         mid=left+(right-left)/2;
+         lsum=build(nums,left,mid,2*pos+1);
+         rsum=build(nums,mid+1,right,2*pos+2);
+         return segTree[pos]=lsum+rsum;
 
-        if (left == right) return segTree[node] = nums[left];
-
-        middle = (left + right) / 2;
-        leftSum = build(nums, left, middle, 2 * node + 1);
-        rightSum = build(nums, middle+1, right, 2 * node + 2);
-        return segTree[node] = leftSum + rightSum;
     }
 
+   // TC:O(Logn)
     public void update(int index, int val) {
          update(index, val, 0, n-1, 0);
     }
   
-    int update(int index, int newValue, int ss, int se, int node) {
-        int leftSum, rightSum;
-        int middle;
+    int update(int index, int newValue, int left, int right, int pos) {
+        
+        int mid,lsum,rsum;
+        
+        if(index<left || index>right)return segTree[pos];
+        if(left==right)return segTree[pos]=newValue;
+        mid=left+(right-left)/2;
+        
+        lsum=update(index,newValue,left,mid,2*pos+1);
+        rsum=update(index,newValue,mid+1,right,2*pos+2);
+        return segTree[pos]=lsum+rsum;
+        
+        
 
-        if (index < ss || index > se) return segTree[node];
-        if (ss == se) return segTree[node] = newValue;
-
-        middle = (ss + se) / 2;
-        leftSum = update(index, newValue, ss, middle, 2 * node + 1);
-        rightSum = update(index, newValue, middle+1, se, 2 * node + 2);
-         segTree[node] = leftSum + rightSum;
-        return segTree[node];
     }
 
     
+    // TC:O(Logn)
     public int sumRange(int left, int right) {
          return sumRange(left, right, 0, n-1, 0);
     }
-      int sumRange(int left, int right, int ss, int se, int node) {
-        int leftSum, rightSum;
-        int middle;
-
-        if (right < ss || left > se) return 0;
-        if (left <= ss && se <= right) return segTree[node];
-
-        middle = (ss + se) / 2;
-        leftSum = sumRange(left, right, ss, middle, 2 * node + 1);
-        rightSum = sumRange(left, right, middle+1, se, 2 * node + 2);
-
-        return leftSum + rightSum;
+      int sumRange(int gLeft, int gRight, int left, int right ,int pos) {
+        int mid,lsum,rsum;
+        
+        if(gRight<left || gLeft>right)return 0;
+        if(gLeft<=left && right<=gRight)return segTree[pos];
+        mid=left+(right-left)/2;
+        
+        lsum=sumRange(gLeft,gRight,left,mid,2*pos+1);
+        rsum=sumRange(gLeft,gRight,mid+1,right,2*pos+2);
+        return lsum+rsum;
     }
 
 }
