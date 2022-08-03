@@ -1,7 +1,45 @@
 class Solution {
+    int count(int arr[][], int mid)
+	{
+	    int i=arr.length-1;int j=0;
+        int cnt=0;
+        while(i>=0 && j<arr[0].length)
+        {
+            if(arr[i][j]>mid)
+                i--;
+            else
+            {
+                cnt+=i+1;
+                j++;
+            }
+        }
+        return cnt;
+	}
     public int kthSmallest(int[][] matrix, int k) {
         
+         int n = matrix.length;
+        int low = matrix[0][0];
+        int high = matrix[n-1][n-1];
+        int ans=0;
+        while(low <= high){
+            
+            int mid = low + (high - low)/2;
+            int cnt = 0;
+
+                cnt = count(matrix,mid);
+
+            
+            if(cnt < k){
+                low = mid + 1;
+            }else{
+                ans=mid;
+                high = mid-1;
+                
+            }
+            
+        }
         
+        return ans;
         
 //         //1st Method Brute Force TC:O(n*n+nlogn)=(n^2)
 //          int n = matrix.length;
@@ -30,31 +68,7 @@ class Solution {
 //         }
 //         return hp.peek();
         
-         int rows = matrix.length, cols = matrix[0].length;
         
-        int lo = matrix[0][0], hi = matrix[rows - 1][cols - 1] ;
-        while(lo <= hi) {
-            int mid = lo + (hi - lo) / 2;
-            int count = 0,  maxNum = lo;
-           
-            for (int r = 0, c = cols - 1; r < rows; r++) {
-                while (c >= 0 && matrix[r][c] > mid) c--;   
-                
-                if (c >= 0) {
-                    count += (c + 1); // count of nums <= mid in matrix
-                    maxNum = Math.max(maxNum, matrix[r][c]); 
-         // mid might be value not in  matrix, we need to record the actually max num;
-                }else{ //it means c < 0
-                    break;
-                } 
-            }
-            
-            // adjust search range
-            if (count == k) return maxNum;
-            else if (count < k) lo = mid + 1;
-            else hi = mid - 1;
-        }
-        return lo;
         
         
         
