@@ -1,6 +1,6 @@
 class Solution {
     public long countBadPairs(int[] nums) {
-        long cnt=0l;
+        long good_pairs=0l;
         HashMap<Integer,Integer> hm= new HashMap<Integer,Integer>();
         for(int i=0;i<nums.length;i++)
         {
@@ -9,9 +9,9 @@ class Solution {
         
         for(Map.Entry<Integer,Integer> ele:hm.entrySet())
         {
-            cnt+=(1l*ele.getValue()*(ele.getValue()-1))/2;
+            good_pairs+=(1l*ele.getValue()*(ele.getValue()-1))/2;
         }
-        long t=1l*nums.length*(nums.length-1)/2;
-        return t-cnt;
+        long total_pairs=1l*nums.length*(nums.length-1)/2;
+        return total_pairs-good_pairs;
     }
 }
