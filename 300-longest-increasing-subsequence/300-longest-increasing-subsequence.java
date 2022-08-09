@@ -1,6 +1,24 @@
 class Solution {
     public int lengthOfLIS(int[] nums) {
-        int []dp = new int[nums.length];
+ 
+         //TC:O(n^logn)  and SC : O(n)
+        int[] tails = new int[nums.length];
+    int size = 0;
+    for (int x : nums) {
+        int i = 0, j = size;
+        while (i != j) {
+            int m = (i + j) / 2;
+            if (tails[m] < x)
+                i = m + 1;
+            else
+                j = m;
+        }
+        tails[i] = x;
+        if (i == size) ++size;
+    }
+    return size;
+        //TC:O(n^2)  and SC : O(n)
+     /*   int []dp = new int[nums.length];
         
         dp[0]=1;
         
@@ -19,6 +37,10 @@ class Solution {
             
         }
         
-        return Arrays.stream(dp).max().getAsInt();
+        return Arrays.stream(dp).max().getAsInt();*/
+        
+        
+        
+        
     }
 }
