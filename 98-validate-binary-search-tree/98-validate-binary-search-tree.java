@@ -13,6 +13,8 @@
  *     }
  * }
  */
+/*
+1st method
 class Solution {
     ArrayList<Integer> al = new ArrayList<Integer>();
     public boolean isValidBST(TreeNode root) {
@@ -34,4 +36,28 @@ class Solution {
         al.add(root.val);
         intraverse(root.right);
     }
+}
+*/
+
+class Solution {
+
+    public boolean isValidBST(TreeNode root) {
+        
+       
+        return validateNode(Long.MIN_VALUE,Long.MAX_VALUE,root);
+        
+    }
+    
+    boolean validateNode(long min,long max,TreeNode node)
+    {
+        if(node==null)return true;
+        if(min>=node.val || node.val>=max)
+        {
+            return false;
+        }
+        
+        return validateNode(min,node.val*1l,node.left) &&validateNode(node.val*1l,max,node.right);
+    }
+    
+    
 }
