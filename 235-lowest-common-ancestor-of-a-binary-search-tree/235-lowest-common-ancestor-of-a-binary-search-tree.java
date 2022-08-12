@@ -11,8 +11,23 @@
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         
+        //1
+        if(root==null || root==p || root==q)
+            return root;
         
-        if(root==null)
+        TreeNode left=lowestCommonAncestor(root.left,p,q);
+        TreeNode right=lowestCommonAncestor(root.right,p,q);
+        if(left==null)
+            return right;
+        if(right==null)
+            return left;
+        
+        return root;
+        
+        
+        
+        //O(height of tree) 2nd method
+     /*   if(root==null)
             return null;
         
         if(root.val<p.val && root.val<q.val)
@@ -21,5 +36,6 @@ class Solution {
             return lowestCommonAncestor(root.left,p,q);
         
         return root;
+        */
     }
 }
