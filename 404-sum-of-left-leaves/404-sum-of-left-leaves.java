@@ -21,17 +21,13 @@ class Solution {
     
     int traverse(TreeNode root,int x)
     {
+        if(root==null)return 0;
         if(root.left== null && root.right==null)
         {
             if(x==0)
                 return root.val;
         }
         
-        int sum=0;
-        if(root.left!=null)
-        sum+=traverse(root.left,0);
-        if(root.right!=null)
-        sum+=traverse(root.right,1);
-        return sum;
+        return traverse(root.left,0)+traverse(root.right,1);
     }
 }
