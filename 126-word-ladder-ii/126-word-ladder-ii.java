@@ -1,68 +1,104 @@
 class Solution {
-    Set<String> set = new HashSet();
-    String beginWord, endWord;
-    Map<String, Integer> dist = new HashMap();
-    List<List<String>> res;
-    public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
-        this.beginWord = beginWord;
-        this.endWord = endWord;
-        this.res = new ArrayList();
-        for (String word : wordList) {
-            set.add(word);
+    
+    public boolean diffByOne(String s1,String s2){
+        if(s1.length()!=s2.length())return false;
+        int count = 0;
+        for(int i=0;i<s1.length();i++){
+            if(s1.charAt(i)!=s2.charAt(i))count++;
         }
-        short_path();
-        if (dist.get(endWord) == null) return res;
-        List<String> path = new ArrayList();
-        path.add(endWord);
-        dfs(endWord, path);
-        return res;
+        return count==1 ? true: false;
     }
     
-    private void short_path() {
-        Queue<String> q = new LinkedList();
-        q.offer(beginWord);
-        dist.put(beginWord, 0);
-        while(q.size() > 0) {
-            String cur = q.poll();
-            if (cur.equals(endWord) ) break;
-            char[] charCur = cur.toCharArray();
-            for (int i = 0; i < cur.length(); i++) {
-                char c = charCur[i];
-                for (char j = 'a'; j <= 'z'; j++) {
-                    charCur[i] = j;
-                    String s = new String(charCur);
-                    if (set.contains(s) && dist.get(s) == null) {
-                        dist.put(s, dist.get(cur) + 1);
-                        q.offer(s);
-                    }
-                    
+    public HashMap<String,List<String>> graph(List<String> wordList){
+        HashMap<String,List<String>> adj_list = new HashMap<>();
+        for(String word: wordList){
+            adj_list.put(word,new ArrayList<String>());
+        }
+        
+        
+        for(int i=0;i<wordList.size();i++){
+            for(int j=i+1;j<wordList.size();j++){
+                if(diffByOne(wordList.get(i),wordList.get(j))){
+                    adj_list.get(wordList.get(i)).add(wordList.get(j));
+                    adj_list.get(wordList.get(j)).add(wordList.get(i));
                 }
-                charCur[i] = c;
             }
         }
+        return adj_list;
     }
     
-    private void dfs(String word, List<String> path) {
-        if (word.equals(beginWord)) {
-            List list = new ArrayList(path);
-            Collections.reverse(list);
-            res.add(list);
+    public void reverseTraverse(List<List<String>> res,String beginWord,String endWord,List<String> path,HashMap<String,List<String>> adj_list,Map<String, Integer> levels){
+        if(endWord==beginWord){
+            List<String> path_copy = new ArrayList<>();
+            for(String p: path)path_copy.add(0,p);
+            path_copy.add(0,beginWord);
+            
+            res.add(path_copy);
             return;
         }
-        char[] charCur = word.toCharArray();
-        for (int i = 0; i < word.length(); i++) {
-            char c = charCur[i];
-            for (char j = 'a'; j <= 'z'; j++) {
-                charCur[i] = j;
-                String s = new String(charCur);
-                if (dist.get(s) != null && dist.get(s) + 1 == dist.get(word)) {
-                    path.add(s);
-                    dfs(s, path);
-                    path.remove(path.size() - 1);
-                }
-                    
+        // add endword to the path
+        path.add(endWord);
+        
+        // get all the neigbours of endWord
+        for(String neigh: adj_list.get(endWord)){
+            // the neigh which is at one level above endWord level is the desired neighbours 
+            if(levels.get(endWord)!=null && levels.get(neigh)!=null && levels.get(endWord)-1 == levels.get(neigh)){
+                reverseTraverse(res,beginWord,neigh,path,adj_list,levels);
             }
-            charCur[i] = c;
         }
+        // backtrack
+        path.remove(path.size()-1);
+    }
+    
+    // Time Complexity: O(N^2 + N)
+    public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
+        wordList.add(0,beginWord);// add the beginWord in wordList
+        HashMap<String,List<String>> adj_list = graph(wordList);// create graph
+        Map<String, Integer> levels = new HashMap<>();// mark the levels because we need to backtrack in a order to get all paths
+        levels.put(beginWord, 0);// beginword is at first levels
+        
+        Set<String> visited = new HashSet<>(wordList.size());//visited Set
+        
+        // init the queue
+        Queue<String> q = new LinkedList<>();
+        q.add(beginWord);visited.add(beginWord);
+        
+        // for getting the levels from begin to endWord
+        int cnt = 0;
+        int lev = 0;
+        
+        while(!q.isEmpty()){
+            int size = q.size();
+            for(int i=0;i<size;i++){
+                // poll and get the currLevel
+                String poll = q.poll();
+                int currLevel = levels.get(poll);
+                // if we got endWord then update the lev and break 
+                if(poll.equals(endWord)){
+                    lev = cnt;
+                    break;
+                }
+                // get all the neighbours
+                List<String> neighs = adj_list.get(poll);
+                for(String neigh: neighs){
+                    // not visited
+                    if(!visited.contains(neigh)){
+                        visited.add(neigh);
+                        q.add(neigh);
+                        // add the levels [neigh -> parent_level+1]
+                        levels.put(neigh,currLevel+1);
+                    }
+                }
+            }
+            cnt++;
+        }
+        
+        List<List<String>> res = new ArrayList<>();
+        if(lev!=0){
+           // now just backtrack to get all the paths from endword to beginword
+           reverseTraverse(res,beginWord,endWord,new ArrayList<String>(),adj_list,levels);
+           return res;
+        }
+        return res;
     }
 }
