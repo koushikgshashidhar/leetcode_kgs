@@ -1,6 +1,8 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
+      
         
+        //Better optimized way with constant array space
         if(s.length()!=t.length())return false;
         int []arr= new int[26];
         
@@ -14,15 +16,10 @@ class Solution {
             if(arr[c-'a']<0)return false;
         }
         
-        // for(int a:arr)
-        // {
-        //     if(a!=0)return false;
-        // }
-        
         return true;
  
         
-        
+//Brute Force way with extra space of hashMap     
         
 //       HashMap<Character,Integer> hm = new HashMap<Character,Integer>();
 
