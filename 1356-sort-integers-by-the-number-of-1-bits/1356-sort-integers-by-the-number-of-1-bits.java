@@ -12,8 +12,8 @@ class Solution {
        
    }
        
-       /*
-       Integer[] arrInt = new Integer[arr.length];
+       
+    /*   Integer[] arrInt = new Integer[arr.length];
         
         for(int i=0;i<arr.length;i++) {
             arrInt[i]=arr[i];
