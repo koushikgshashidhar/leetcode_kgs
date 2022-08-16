@@ -1,6 +1,23 @@
 class Solution {
     public String freqAlphabets(String s) {
-         HashMap<String, Character> map = new HashMap<>();
+        
+         StringBuilder output = new StringBuilder(); //used stringbuiled append b/c it's optimized
+        
+        for(int i = s.length()-1; i >= 0; i--){ //starts from last character, goes till first character
+            
+            if(s.charAt(i) == '#'){
+                output.append((char)('a' + (s.charAt(i-1) -'0' ) -1+ 10*(s.charAt(i-2)-'0') ) ); 
+                //using ascii, add 'a' to start from the alphabet, subtract '0' b/c currently the digits in the String s are chars
+                
+                i -= 2; //have skip 2 characters , b/c we already checked it in the above line
+            } else {
+                output.append((char)('a' + (s.charAt(i) - '0') -1));
+            }
+        }
+        output.reverse(); //very helpful method, reverses the whole string
+        
+        return output.toString(); //convert StringBuilder obj to string
+        /* HashMap<String, Character> map = new HashMap<>();
         int k = 1;
         for (char ch = 'a'; ch <= 'z'; ch++) {
             if (ch < 'j')
@@ -21,6 +38,6 @@ class Solution {
             }
         }
         
-        return sb.reverse().toString();
+        return sb.reverse().toString*/
     }
 }
