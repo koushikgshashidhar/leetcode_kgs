@@ -19,8 +19,8 @@ class Solution {
         
         if(root==null)return true;
       
-        height(root);
-        return res;
+        return height(root)!=-1;
+       
     }
     
     int height(TreeNode root)
@@ -29,8 +29,9 @@ class Solution {
         
         int left=height(root.left);
         int right=height(root.right);
+        if(left==-1 || right==-1)return -1;
         if(Math.abs(left-right)>1)
-            res=false;
+            return -1;
         return Math.max(left,right)+1;
     }
 }
