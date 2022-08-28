@@ -11,8 +11,8 @@ class Solution {
                 }
                 int currSum = maxSubArray(dp, k);
                 maxK = Math.max(maxK, currSum);                 
-                // if(maxK == k)
-                //     return k;
+                if(maxK == k)
+                    return k;
             }
         }
         return maxK;
