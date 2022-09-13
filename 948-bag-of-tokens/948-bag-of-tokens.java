@@ -3,7 +3,6 @@ class Solution {
         
         
         Arrays.sort(tokens);
-        int ans=0;
         int score=0;
         int left=0,right=tokens.length-1;
         
@@ -24,7 +23,6 @@ class Solution {
             }
             else
                 break;
-           ans=Math.max(ans,score);
                 
         }
         
