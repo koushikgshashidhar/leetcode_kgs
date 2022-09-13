@@ -15,7 +15,7 @@ class Solution {
                 score++;
                 left++;
             }
-            else if(power+tokens[right]>tokens[left] && score!=0 && left!=right)
+            else if( score!=0 && left!=right)
             {
                 power+=tokens[right];
                 score--;
