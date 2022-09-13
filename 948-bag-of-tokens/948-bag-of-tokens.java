@@ -1,29 +1,33 @@
 class Solution {
-    public int bagOfTokensScore(int[] a, int p) {
-         int n = a.length;
-        if(n == 0)
-            return 0;
-        Arrays.sort(a);
-        int i=0;
-        int j = n-1;
-        int cur = 0;
-        int max = 0;
-        while(i<=j){
-            if(p>=a[i]){
-                p -= a[i];
-                cur++;
-                if(cur>max)
-                    max = cur;
-                i++;
+    public int bagOfTokensScore(int[] tokens, int power) {
+        
+        
+        Arrays.sort(tokens);
+        
+        int score=0;
+        int left=0,right=tokens.length-1;
+        
+        while(left<=right)
+        {
+            if(power>=tokens[left] )
+            {
+                power-=tokens[left];
+                score++;
+                left++;
             }
-            else if(cur>=1){
-                p += a[j];
-                j--;
-                cur--;
+            else if(power+tokens[right]>tokens[left] && score!=0 && left!=right)
+            {
+                power+=tokens[right];
+                score--;
+                right--;
+                
             }
             else
                 break;
+                
         }
-        return max;
+        
+     
+            return score;
     }
 }
