@@ -15,7 +15,7 @@ class Solution {
                 score++;
                 left++;
             }
-            else if(score>0)
+            else if(score>0 && left!=right)
             {
                 power+=tokens[right];
                 score--;
@@ -29,6 +29,6 @@ class Solution {
         }
         
      
-            return ans;
+            return score;
     }
 }
