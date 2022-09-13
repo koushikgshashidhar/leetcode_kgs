@@ -3,7 +3,7 @@ class Solution {
         
         
         Arrays.sort(tokens);
-        
+        int ans=0;
         int score=0;
         int left=0,right=tokens.length-1;
         
@@ -15,7 +15,7 @@ class Solution {
                 score++;
                 left++;
             }
-            else if( score!=0 && left!=right)
+            else if(score>0)
             {
                 power+=tokens[right];
                 score--;
@@ -24,10 +24,11 @@ class Solution {
             }
             else
                 break;
+           ans=Math.max(ans,score);
                 
         }
         
      
-            return score;
+            return ans;
     }
 }
