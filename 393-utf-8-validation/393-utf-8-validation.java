@@ -40,10 +40,7 @@ class Solution {
    
             
         }        
-        if(checkNum==0)
-                return true;
-            else
-                return false;
-        
+        return(checkNum==0);
+            
     }
 }
