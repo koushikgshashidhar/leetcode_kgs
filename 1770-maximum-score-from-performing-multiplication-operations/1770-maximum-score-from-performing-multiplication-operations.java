@@ -1,20 +1,24 @@
 class Solution {
-  int n, m;
-    int[] nums, muls;
-    Integer[][] memo;
-    public int maximumScore(int[] nums, int[] muls) {
-        n = nums.length;
-        m = muls.length;
-        this.nums= nums;
-        this.muls = muls;
-        this.memo = new Integer[m][m];
-        return dp(0, 0);
+    int [][]dp;
+    public int maximumScore(int[] nums, int[] multipliers) {
+        int m= multipliers.length;
+        dp= new int[m][m];
+       return maxScore(0,0,nums,multipliers);
+     
     }
-    private int dp(int l, int i) {
-        if (i == m) return 0; // Picked enough m elements
-        if (memo[l][i] != null) return memo[l][i];
-        int pickLeft = dp(l+1, i+1) + nums[l] * muls[i]; // Pick the left side
-        int pickRight = dp(l, i+1) + nums[n-(i-l)-1] * muls[i]; // Pick the right side
-        return memo[l][i] = Math.max(pickLeft, pickRight);
+    
+    
+    int maxScore(int i,int l,int []nums,int []mul)
+    {
+        
+        if(i==mul.length)
+            return 0;
+        
+        if(dp[i][l]!=0)return dp[i][l];
+        int x=mul[i]*nums[nums.length-1-(i-l)]+maxScore(i+1,l,nums,mul);
+        int y=mul[i]*nums[l]+maxScore(i+1,l+1,nums,mul);
+        
+        dp[i][l]=Math.max(x,y);
+        return dp[i][l];
     }
 }
