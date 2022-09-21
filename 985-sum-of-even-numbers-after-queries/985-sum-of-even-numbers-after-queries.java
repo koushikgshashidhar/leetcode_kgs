@@ -15,12 +15,10 @@ class Solution {
         {
         if(((nums[a[1]])&1)==0)
            sum-=nums[a[1]];
-              nums[a[1]]+=a[0];
+         nums[a[1]]+=a[0];
             if(((nums[a[1]])&1)==0)
             {
-               
                 sum+=nums[a[1]];
-               //System.out.println("hi"+a[1]);
              }
             res[i++]=sum;
         }
