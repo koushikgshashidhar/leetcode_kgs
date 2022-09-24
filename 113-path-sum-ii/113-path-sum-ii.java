@@ -14,38 +14,26 @@
  * }
  */
 class Solution {
-    List<List<Integer>> res= new ArrayList<>();
-    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
-        List<Integer> al= new ArrayList<Integer>();
-        traverseTree(root,0,targetSum,al);
+     public List<List<Integer>> pathSum(TreeNode root, int sum) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        pathSum(root, sum, new ArrayList<Integer>(), res);
         return res;
-        
     }
-    void traverseTree(TreeNode root,int no,int sum,List<Integer> al)
-    {
-     
-        if(sum<sum)return;
-        
-        if(root==null)return;
-        
-        if(root.left==null && root.right==null && no+root.val==sum)
-        {   al.add(root.val);
-            res.add(new ArrayList<>(al));
-             al.remove(al.size()-1);
-        return;
+    
+    void pathSum(TreeNode root, int sum, List<Integer> sol, List<List<Integer>> res) {
+        if (root == null) {
+            return;
         }
         
-        al.add(root.val);
+        sol.add(root.val);
         
-        traverseTree(root.left,no+root.val,sum,al);
+        if (root.left == null && root.right == null && sum == root.val) {
+            res.add(new ArrayList<Integer>(sol));
+        } else {
+            pathSum(root.left, sum - root.val, sol, res);
+            pathSum(root.right, sum - root.val, sol, res);
+        }
         
-       // al.remove(al.size()-1);
-        
-        traverseTree(root.right,no+root.val,sum,al);
-        
-        al.remove(al.size()-1);
-        
-        
-        
+        sol.remove(sol.size() - 1);
     }
 }
