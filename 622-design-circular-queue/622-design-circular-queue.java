@@ -1,53 +1,39 @@
 class MyCircularQueue {
-
-    Deque<Integer> q;
-    int size;
+private int tail, head, size, n;
+    private final int[] a;
     public MyCircularQueue(int k) {
-        q= new ArrayDeque(k);
-        size=k;
+        a = new int[n = k];
+        tail = -1;
     }
     
-    public boolean enQueue(int value) {
-        
-        
-        // return q.offer(value);
-        if(q.size()==size)
-            return false;
-        q.add(value);
+    public boolean enQueue(int x) {
+        if (size == n) return false;
+        a[tail = ++tail % n] = x;
+        size++;
         return true;
     }
     
     public boolean deQueue() {
-        
-        
-      // if(q.poll()==null)
-      //     return false;
-      //   return true;
-         if(q.size()==0)
-            return false;
-        q.poll();
+        if (size == 0) return false;
+        head = ++head % n;
+        size--;
         return true;
     }
     
     public int Front() {
-        
-        if(q.peekFirst()==null)
-            return -1;
-        return q.peekFirst();
+        return size == 0 ? -1 : a[head];
     }
     
     public int Rear() {
-        if(q.peekLast()==null)
-            return -1;
-        return q.peekLast();
+        return size == 0 ? -1 : a[tail];
     }
     
     public boolean isEmpty() {
-        return (q.size()==0);
+        return size == 0;
     }
     
     public boolean isFull() {
-        return q.size()==size;
+        return size == n;
     }
 }
 
