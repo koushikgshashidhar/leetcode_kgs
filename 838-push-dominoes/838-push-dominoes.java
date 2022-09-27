@@ -1,23 +1,61 @@
 class Solution {
-   public String pushDominoes(String dominoes) {
-        char[] a = dominoes.toCharArray();
-        for (int i = 0, L = -1, R = -1; i <= dominoes.length(); i++)
-            if (i == a.length || a[i] == 'R') {
-                if (R > L)//R..R, turn all to R
-                    while (R < i)
-                        a[R++] = 'R';
-                R = i;
-            } else if (a[i] == 'L')
-                if (L > R || R == -1)//L..L, turn all to L
-                    while (++L < i)
-                        a[L] = 'L';
-                else { //R...L
-                    L = i;
-                    for (int lo = R + 1, hi = L - 1; lo < hi; ) {//one in the middle stays '.'
-                        a[lo++] = 'R';
-                        a[hi--] = 'L';
-                    }
-                }
-        return new String(a);
+    public String pushDominoes(String dominoes) {
+        
+        char []arr= dominoes.toCharArray();
+        int []left= new int[arr.length];
+          int []right= new int[arr.length];
+        Arrays.fill(left,Integer.MAX_VALUE);
+          Arrays.fill(right,Integer.MAX_VALUE);
+        int x=-1;
+        for(int i=0;i<arr.length;i++)
+        {
+            if(arr[i]=='R')
+            {
+                x=0;
+            }
+            else if(arr[i]=='L')
+            {
+                x=-1;
+            }
+            else if(x>=0)
+            {
+                right[i]= ++x;
+            }
+        }
+        x=-1;
+        for(int i=arr.length-1;i>=0;i--)
+        {
+             if(arr[i]=='L')
+            {
+                x=0;
+            }
+            else if(arr[i]=='R')
+            {
+                x=-1;
+            }
+            else if(x>=0)
+            {
+                left[i]= ++x;
+            }
+        }
+        // System.out.println(Arrays.toString(left));
+        //    System.out.println(Arrays.toString(right));
+        StringBuilder sb= new StringBuilder();
+        for(int i=0;i<arr.length;i++)
+        {
+            if(arr[i]=='.')
+            {
+                if(left[i]<right[i])
+                    sb.append('L');
+                else  if(left[i]>right[i])
+                    sb.append('R');
+                else sb.append('.');
+            }
+            else
+            {
+                sb.append(arr[i]);
+            }
+        }
+        return sb.toString();
     }
 }
