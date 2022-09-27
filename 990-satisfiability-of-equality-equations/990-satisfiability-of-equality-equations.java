@@ -1,56 +1,62 @@
-class Solution {
-    // parent is the root of the tree
-    int[] parent = new int[26];
-    //size is used to make the tree degree lower
-    int[] size = new int[26];
-    public boolean equationsPossible(String[] equations) {
-        // make themselves their parents
-        for(int i = 0; i < 26; i++){
-            size[i] = 1;
-            parent[i] = i;
-        }
-        // if "a == b" connet the a, b
-        for(String s: equations){
-            if(s.charAt(1) == '='){
-                int a = s.charAt(0) - 'a';
-                int b = s.charAt(3) - 'a';
-                connect(a, b);
-            }
-        }
-        //if "a != b" check whether these two has been connected
-        for(String s : equations){
-            if(s.charAt(1) == '!'){
-                int a = s.charAt(0) - 'a';
-                int b = s.charAt(3) - 'a';
-                if(checkConnection(a, b)) return false;
-            }
-        }
-        return true;
-    }
-    public void connect(int a, int b){
-        int roota = findRoot(a);
-        int rootb = findRoot(b);
-        if(roota == rootb) return;
-        if(size[roota] >= size[rootb]){
-            parent[rootb] = roota;
-            size[roota] += size[rootb];
-        }else{
-            parent[roota] = rootb;
-            size[rootb] += size[roota];
-        }
-    }
-    public int findRoot(int a){
-        while(parent[a] != a){
-            parent[a] = parent[parent[a]];
-            a = parent[a];
-        }
-        return a;
-    }
-    public boolean checkConnection(int a, int b){
-        int roota = findRoot(a);
-        int rootb = findRoot(b);
-        if(roota == rootb) return true;
-        return false;
-    }
 
+class Solution {
+    public boolean equationsPossible(String[] equations) {
+        
+        // If a == b, then a's parent = a and b's parent = a; then if b == c, then since b's parent = a, then c'a parent = a.
+        // We build the parent map using union-find.
+        // Next when we traverse all != cases, if var1, var2 parent are same but they have != relationship, this is not possible -> return false
+        // return true otherwise at end.
+        
+        int [] parent = new int[26];
+        
+        for (int i = 0; i < 26; i++) {
+            parent[i] = i;      // initially all are their own parent
+        }
+        
+        // first traverse all == cases to establish parent-child relationship
+        for (String equation : equations) {
+            char equality = equation.charAt(1);
+            if (equality == '=') {
+                
+                int var1 = fetchParent(equation.charAt(0)-97, parent);
+                int var2 = fetchParent(equation.charAt(3)-97, parent);
+                
+                if (var1 != var2) {     // unify them
+                    parent[var2] = var1;
+                }
+                
+            }
+        }
+        
+        // for (int i = 0; i < 26; i++) {
+        //     System.out.print(parent[i] + " ");
+        // }
+        // System.out.println();
+        
+        // now traverse all != cases to check if any invalid condition exist
+        for (String equation : equations) {
+            char equality = equation.charAt(1);
+            if (equality == '!') {
+                
+                int var1 = fetchParent(equation.charAt(0)-97, parent);
+                int var2 = fetchParent(equation.charAt(3)-97, parent);
+                
+                if (var1 == var2) {     
+                    return false;
+                }
+                
+            }
+        }
+        
+        return true;
+        
+    }
+    
+    
+    public int fetchParent(int index, int [] parent) {
+        if (parent[index] == index)
+            return index;
+        return fetchParent(parent[index], parent);
+    }
+    
 }
