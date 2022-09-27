@@ -56,7 +56,8 @@ class Solution {
     public int fetchParent(int index, int [] parent) {
         if (parent[index] == index)
             return index;
-        return fetchParent(parent[index], parent);
+        parent[index]=fetchParent(parent[index], parent);
+        return parent[index];
     }
     
 }
