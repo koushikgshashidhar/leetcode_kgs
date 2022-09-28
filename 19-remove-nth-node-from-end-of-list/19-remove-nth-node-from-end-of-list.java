@@ -28,7 +28,7 @@ class Solution {
             temp=temp.next;
             ln--;
         }
-        if(temp.next!=null)
+        //if(temp.next!=null)
         temp.next=temp.next.next;
         
         return head;
