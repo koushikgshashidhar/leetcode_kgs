@@ -1,6 +1,7 @@
 class Solution {
     public int numDecodings(String s) {
-  int[] dp = new int[s.length()];
+
+        int[] dp = new int[s.length()];
         if(s.charAt(0) == '0'){
             return 0;
         }
@@ -24,7 +25,7 @@ class Solution {
                 }
             }
 
-            if(no!=10 && no!=20){
+            if(ones!=0){
                 dp[i] =dp[i] + dp[i-1];
             }
 
