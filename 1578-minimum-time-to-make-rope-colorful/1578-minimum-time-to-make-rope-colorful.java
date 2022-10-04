@@ -1,16 +1,26 @@
 class Solution {
-   public int minCost(String s, int[] cost) {
-        int result = 0;
-        char[] a = s.toCharArray();
-        int max = 0; //pointer to the element with highest cost in sequence of identical characters
-        for(int i = 1; i < a.length; ++i){
-            if(a[max] == a[i]){
-                result += Math.min(cost[max], cost[i]);
-                if(cost[max] < cost[i]) max = i; //if i points to the character with higher cost we set this character as our current maximum.
+    public int minCost(String colors, int[] neededTime) {
+        
+        
+        int sum=0;
+        for(int i=1;i<colors.length();i++)
+        {
+            int max=Integer.MIN_VALUE;
+            int temp=neededTime[i-1];
+            while(i<colors.length() && colors.charAt(i-1)==colors.charAt(i))
+            {
+             
+                max=Math.max(neededTime[i-1],max);
+                  max=Math.max(neededTime[i],max);
+                temp+=neededTime[i];
+                i++;
             }
-            else max = i; // If characters are different we move "max" by one place, or in other words element at max has the highest cost in it's sequence of size 1.
+            if(max!=Integer.MIN_VALUE)
+            sum+=(temp-max);
+            
         }
-        return result;
+        
+        return sum;
         
     }
 }
