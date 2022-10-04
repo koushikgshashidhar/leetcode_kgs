@@ -1,36 +1,41 @@
 class Solution {
-    public int numRollsToTarget(int d, int f, int target) {
-          //to store the number of ways using bottom up approach
-        //dp array holds the row value as number of dice
-        // and col value as target
-        int[][] dp  = new int[d+1][target+1];
+    int [][]dp;
+    int mod=1000000007;
+    public int numRollsToTarget(int n, int k, int target) {
         
-        //base case ==>
-        // if target = 0 and number of dice is zero
-        // then we can only have one way i.e, not doing anything => one way
+        dp=new int[n+1][target+1];
+        for(int []d:dp)
+        Arrays.fill(d,-1);
+       return roll(n,k,target);
+    }
+    
+    int roll(int n, int k, int target)
+    {
         
-        dp[0][0] = 1;
+    //base
+            if(target<0)
+                return 0;
+            if(n!=0 && target==0)
+                return 0;
+            if(target!=0 && n==0)
+                return 0;
         
-        //mod val
-        //simply use built in 1e and specify power value to get 10power number (in JAVA)
+        if(target==0 &&  n==0)
+            return 1;
         
-        int mod = (int) 1e9 + 7;
+        if(dp[n][target]!=-1)
+            return dp[n][target];
         
-        for(int dice = 1;dice <= d ; dice++){
-            for(int target_val = 0;target_val<=target ; target_val++){
-                for(int face_val = 1; face_val<=f ; face_val++){
-                    //check if target_val is greater than face val and proceed
-                    
-                    if(target_val >= face_val){
-                        // way of getting target with current dice is 
-                        //sum of ways of getting target with previous dice with target as currtarget - facevalue
-                        //plus curr ways
-                        dp[dice][target_val] = (dp[dice][target_val] + dp[dice-1][target_val - face_val])%mod;
-                    }
-                }
-            }
-        }
+            int sum=0;
+            for(int i=1;i<=k;i++)
+             sum=(sum+roll(n-1,k,target-i))%mod;
         
-        return dp[d][target];
+        dp[n][target]=sum;
+        
+        return sum;
+            
+            
+            
+        
     }
 }
