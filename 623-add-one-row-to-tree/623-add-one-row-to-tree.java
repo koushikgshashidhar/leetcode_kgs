@@ -32,11 +32,6 @@ class Solution {
         
          if(depth==1)
          {
-            if(root!=null)
-            {//System.out.println(root.val +" "+depth);
-             
-           
-            
              if(root!=null)
              {
                  TreeNode t1= new TreeNode(val,root.left,null);
@@ -47,8 +42,6 @@ class Solution {
                    TreeNode t2= new TreeNode(val,null,root.right);
                 root.right=t2;
              }
-             
-            }
              return;
          }
          
