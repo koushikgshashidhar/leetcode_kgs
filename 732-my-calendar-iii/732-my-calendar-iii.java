@@ -1,18 +1,30 @@
 class MyCalendarThree {
-    private Map<Integer, Integer> diff;
+    private Map<Integer, Integer> vals;
+    private Map<Integer, Integer> lazy;
 
     public MyCalendarThree() {
-        diff = new TreeMap<>();
+        vals = new HashMap<>();
+        lazy = new HashMap<>();
+    }
+
+    public void update(int start, int end, int left, int right, int idx) {
+        if (start > right || end < left)
+            return;
+        if (start <= left && right <= end) {
+            vals.put(idx, vals.getOrDefault(idx, 0) + 1);
+            lazy.put(idx, lazy.getOrDefault(idx, 0) + 1);
+        } else {
+            int mid = (left + right) / 2;
+            update(start, end, left, mid, idx * 2);
+            update(start, end, mid + 1, right, idx * 2 + 1);
+            vals.put(idx, lazy.getOrDefault(idx, 0)
+                    + Math.max(vals.getOrDefault(idx * 2, 0), vals.getOrDefault(idx * 2 + 1, 0)));
+        }
     }
 
     public int book(int start, int end) {
-        diff.put(start, diff.getOrDefault(start, 0) + 1);
-        diff.put(end, diff.getOrDefault(end, 0) - 1);
-        int res = 0, cur = 0;
-        for (int delta : diff.values()) {
-            cur += delta;
-            res = Math.max(res, cur);
-        }
-        return res;
+        update(start, end - 1, 0, 1000000000, 1);
+       // System.out.println(vals);
+        return vals.getOrDefault(1, 0);
     }
 }
