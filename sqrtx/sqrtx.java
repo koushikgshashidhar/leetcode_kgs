@@ -13,7 +13,7 @@ class Solution {
                 return (int)mid;
             if(mid*mid>x)
             {
-                h=mid-1;
+                h=mid;
             }
             else
             {
