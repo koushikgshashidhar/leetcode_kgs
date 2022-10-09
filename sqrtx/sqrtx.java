@@ -5,7 +5,7 @@ class Solution {
         long l=1;
         long h=x;
         long mid=0;
-        while(l<=h)
+        while(l<h)
         {
            mid=l+(h-l)/2;
             
@@ -21,6 +21,6 @@ class Solution {
             }
             
         }
-        return (int)mid;
+        return (int)l;
     }
 }
