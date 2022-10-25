@@ -12,9 +12,7 @@ class Solution {
         {
             sb2.append(w);
         }
-        
-        System.out.println(sb1);
-        System.out.println(sb2);
+
         return (sb1.toString().strip()).equals(sb2.toString().strip());
     }
 }
