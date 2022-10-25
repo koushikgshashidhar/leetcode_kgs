@@ -1,31 +1,33 @@
 class Solution {
-   private boolean isUnique(String str) {
-        if (str.length() > 26) return false;
-        boolean[] used = new  boolean [26];
-        char[] arr = str.toCharArray();
-        for (char ch : arr) {
-            if (used[ch - 'a']){
-                return false;
-            } else {
-                used[ch -'a'] = true;
-            }
+     public int maxLength(List<String> arr) 
+    {
+        int max_len = 0;
+        
+        // [1] we should first throw away all strings with any 
+        //    duplicate characters; strings with all unique  
+        //    characters are the subsets of the alphabet, thus, 
+        //    can be encoded using binary form 
+        List<Integer> unique = new ArrayList<>();
+        for (String s : arr)
+        {
+            Integer bin = 0;
+            for (char ch : s.toCharArray()) bin |= 1 << (ch - 'a');
+            if (Integer.bitCount(bin) == s.length()) unique.add(bin);
         }
-        return true;
+
+        // [2] now start with an empty concatenation and iteratively 
+        //    increase its length by trying to add more strings 
+        ArrayList<Integer> concat = new ArrayList<>(List.of(0));
+        for (Integer u : unique)
+            for (int i = concat.size() - 1; i >= 0; i--)
+                if ((concat.get(i) & u) == 0)
+                {
+                    Integer cc = concat.get(i) | u;
+                    concat.add(cc);
+                    max_len = Math.max(max_len, Integer.bitCount(cc));
+                }
+
+        return max_len;
     }
-    public int maxLength(List<String> arr) {
-        List<String> res = new ArrayList<>();
-        res.add("");
-        for (String str : arr) {
-            if (!isUnique(str)) continue;
-            List<String> resList = new ArrayList<>();
-            for (String candidate : res) {
-                String temp = candidate + str;
-                if (isUnique(temp)) resList.add(temp);
-            }
-            res.addAll(resList);
-        }
-        int ans = 0;
-        for (String str : res) ans = Math.max(ans, str.length());
-        return ans;
-    }
+
 }
