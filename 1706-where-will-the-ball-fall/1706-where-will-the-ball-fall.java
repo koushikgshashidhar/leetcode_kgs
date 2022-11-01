@@ -13,6 +13,8 @@ class Solution {
                     result[col] = -1;
                     break;
                 }
+                
+                
                 result[col] = nextColumn;
                 currentCol = nextColumn;
             }
