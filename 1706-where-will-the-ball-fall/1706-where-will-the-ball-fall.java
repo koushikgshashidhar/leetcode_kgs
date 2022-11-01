@@ -9,9 +9,7 @@ class Solution {
             int currentCol = col;
             for (int row = 0; row < grid.length; row++) {
                 int nextColumn = currentCol + grid[row][currentCol];
-                if (nextColumn < 0 ||
-                        nextColumn > grid[0].length - 1 ||
-                        grid[row][currentCol] != grid[row][nextColumn]) {
+                if (nextColumn < 0 || nextColumn > grid[0].length - 1 || grid[row][currentCol] != grid[row][nextColumn]) {
                     result[col] = -1;
                     break;
                 }
