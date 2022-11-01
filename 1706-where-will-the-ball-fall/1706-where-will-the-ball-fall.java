@@ -1,6 +1,8 @@
 class Solution {
     public int[] findBall(int[][] grid) {
         
+        
+        
           int result[] = new int[grid[0].length];
 
         for (int col = 0; col < grid[0].length; col++) {
