@@ -15,7 +15,7 @@ class Solution {
          for(int i=0;i<prefix.length;i++)
         {
             
-             for(int j=i;j<prefix.length;j++)
+             for(int j=i+1;j<prefix.length;j++)
              {
                 if((prefix[j]-prefix[i])==k )
                 res++;
