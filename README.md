@@ -8,6 +8,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- |
 | [0001-two-sum](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0001-two-sum) |
 | [0283-move-zeroes](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0283-move-zeroes) |
+| [0643-maximum-average-subarray-i](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0643-maximum-average-subarray-i) |
 ## Hash Table
 |  |
 | ------- |
@@ -21,4 +22,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [1768-merge-strings-alternately](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/1768-merge-strings-alternately) |
+## Sliding Window
+|  |
+| ------- |
+| [0643-maximum-average-subarray-i](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0643-maximum-average-subarray-i) |
 <!---LeetCode Topics End-->
