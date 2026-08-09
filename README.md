@@ -31,4 +31,20 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [1732-find-the-highest-altitude](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/1732-find-the-highest-altitude) |
+## Tree
+|  |
+| ------- |
+| [0104-maximum-depth-of-binary-tree](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0104-maximum-depth-of-binary-tree) |
+## Depth-First Search
+|  |
+| ------- |
+| [0104-maximum-depth-of-binary-tree](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0104-maximum-depth-of-binary-tree) |
+## Breadth-First Search
+|  |
+| ------- |
+| [0104-maximum-depth-of-binary-tree](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0104-maximum-depth-of-binary-tree) |
+## Binary Tree
+|  |
+| ------- |
+| [0104-maximum-depth-of-binary-tree](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0104-maximum-depth-of-binary-tree) |
 <!---LeetCode Topics End-->
