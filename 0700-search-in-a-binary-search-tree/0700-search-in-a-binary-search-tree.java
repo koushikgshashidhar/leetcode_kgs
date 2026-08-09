@@ -19,16 +19,10 @@ class Solution {
         if(root ==null)return null;
 
         if(root.val==val)return root;
+        else if(root.val<val) return searchBST( root.right, val);
+        else if(root.val>val)  return searchBST( root.left, val);
 
-
-        TreeNode x= searchBST(root.left,val);
-        TreeNode y= searchBST(root.right,val);
-
-        if(x!=null)return x;
-         if(y!=null)return y;
-         return null;
-
-
+        return null;
         
     }
 }
