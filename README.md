@@ -54,5 +54,10 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Binary Search Tree
 |  |
 | ------- |
+| [0374-guess-number-higher-or-lower](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0374-guess-number-higher-or-lower) |
 | [0700-search-in-a-binary-search-tree](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0700-search-in-a-binary-search-tree) |
+## Interactive
+|  |
+| ------- |
+| [0374-guess-number-higher-or-lower](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0374-guess-number-higher-or-lower) |
 <!---LeetCode Topics End-->
