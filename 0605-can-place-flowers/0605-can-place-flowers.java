@@ -3,6 +3,8 @@ class Solution {
 
         for(int i=0;i<flowerbed.length;i++)
         {
+            if( flowerbed[i]==0)
+        {
             int x=0,y=0,sum=0;
             x=i-1;
             y=i+1;
@@ -15,7 +17,8 @@ class Solution {
             {
                 sum+=flowerbed[y];
             }
-            if(sum==0 && flowerbed[i]!=1 ){flowerbed[i]=1;n--;}
+            if(sum==0 ){flowerbed[i]=1;n--;}
+        }
 
         }
 
