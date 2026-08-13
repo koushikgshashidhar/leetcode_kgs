@@ -8,6 +8,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- |
 | [0001-two-sum](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0001-two-sum) |
 | [0283-move-zeroes](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0283-move-zeroes) |
+| [0605-can-place-flowers](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0605-can-place-flowers) |
 | [0643-maximum-average-subarray-i](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0643-maximum-average-subarray-i) |
 | [1732-find-the-highest-altitude](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/1732-find-the-highest-altitude) |
 | [2215-find-the-difference-of-two-arrays](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/2215-find-the-difference-of-two-arrays) |
@@ -62,4 +63,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0374-guess-number-higher-or-lower](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0374-guess-number-higher-or-lower) |
+## Greedy
+|  |
+| ------- |
+| [0605-can-place-flowers](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0605-can-place-flowers) |
 <!---LeetCode Topics End-->
