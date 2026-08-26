@@ -10,15 +10,11 @@ class Solution {
 
         HashSet<Integer> hs= new HashSet<>();
 
-       for(Map.Entry<Integer,Integer> e :hm.entrySet())
+       for(int e :hm.values())
        {
-        if(hs.contains(e.getValue()))
-        {
-            return false;
-        }
-        hs.add(e.getValue());
+        hs.add(e);
        }
-       return true;
+       return hs.size()==hm.size();
         
     }
 }
