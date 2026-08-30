@@ -86,4 +86,16 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0334-increasing-triplet-subsequence](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0334-increasing-triplet-subsequence) |
+## Design
+|  |
+| ------- |
+| [0933-number-of-recent-calls](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0933-number-of-recent-calls) |
+## Queue
+|  |
+| ------- |
+| [0933-number-of-recent-calls](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0933-number-of-recent-calls) |
+## Data Stream
+|  |
+| ------- |
+| [0933-number-of-recent-calls](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0933-number-of-recent-calls) |
 <!---LeetCode Topics End-->
