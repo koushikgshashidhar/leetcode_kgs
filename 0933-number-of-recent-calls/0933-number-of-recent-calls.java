@@ -1,26 +1,19 @@
 class RecentCounter {
+    private static final int[] records = new int[10000]; //
+    private int start;
+    private int end;
 
-
-Queue<Integer> q;
-    public RecentCounter() {
-        q= new PriorityQueue();
+    public RecentCounter() {        
+        start = 0;
+        end = 0;
     }
     
     public int ping(int t) {
-        q.add(t);
-
-        while(q.peek()<(t-3000))
-        {
-            q.poll();
+        while (start < end && (t - records[start] > 3000)) { 
+            start++; // if the difference in time is greater than 3000ms, 
+            // than increase the value of start unitl it's equal or less than 3000ms.
         }
-
-        return q.size();
-        
+        records[end++] = t; // Inserting the current time at the end
+        return end - start; // Returning the answer including the element added just now.
     }
 }
-
-/**
- * Your RecentCounter object will be instantiated and called as such:
- * RecentCounter obj = new RecentCounter();
- * int param_1 = obj.ping(t);
- */
