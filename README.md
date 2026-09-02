@@ -7,6 +7,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0001-two-sum) |
+| [0136-single-number](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0136-single-number) |
 | [0238-product-of-array-except-self](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0238-product-of-array-except-self) |
 | [0283-move-zeroes](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0283-move-zeroes) |
 | [0334-increasing-triplet-subsequence](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0334-increasing-triplet-subsequence) |
@@ -98,4 +99,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0933-number-of-recent-calls](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0933-number-of-recent-calls) |
+## Bit Manipulation
+|  |
+| ------- |
+| [0136-single-number](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0136-single-number) |
 <!---LeetCode Topics End-->
