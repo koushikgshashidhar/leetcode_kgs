@@ -105,4 +105,12 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- |
 | [0136-single-number](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0136-single-number) |
 | [0338-counting-bits](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0338-counting-bits) |
+## Linked List
+|  |
+| ------- |
+| [0206-reverse-linked-list](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0206-reverse-linked-list) |
+## Recursion
+|  |
+| ------- |
+| [0206-reverse-linked-list](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0206-reverse-linked-list) |
 <!---LeetCode Topics End-->
