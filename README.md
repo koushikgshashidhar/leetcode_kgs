@@ -36,6 +36,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- |
 | [0151-reverse-words-in-a-string](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0151-reverse-words-in-a-string) |
 | [0392-is-subsequence](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0392-is-subsequence) |
+| [1071-greatest-common-divisor-of-strings](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/1071-greatest-common-divisor-of-strings) |
 | [1768-merge-strings-alternately](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/1768-merge-strings-alternately) |
 ## Sliding Window
 |  |
@@ -113,4 +114,16 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0206-reverse-linked-list](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/0206-reverse-linked-list) |
+## Math
+|  |
+| ------- |
+| [1071-greatest-common-divisor-of-strings](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/1071-greatest-common-divisor-of-strings) |
+## Euclidean Algorithm
+|  |
+| ------- |
+| [1071-greatest-common-divisor-of-strings](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/1071-greatest-common-divisor-of-strings) |
+## Greatest Common Divisor
+|  |
+| ------- |
+| [1071-greatest-common-divisor-of-strings](https://github.com/koushikgshashidhar/leetcode_kgs/tree/master/1071-greatest-common-divisor-of-strings) |
 <!---LeetCode Topics End-->
